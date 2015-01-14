@@ -1,5 +1,9 @@
 #! /bin/bash -ex
 
+sed -i '/^SocksPort.*$/d' /etc/tor/torrc
+ip=`hostname -i`
+echo "SocksPort $ip:9050" >> /etc/tor/torrc
+
 sed -i '/^StrictNodes.*$/d' /etc/tor/torrc
 sed -i '/^ExitNodes.*$/d' /etc/tor/torrc
 
