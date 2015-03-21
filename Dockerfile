@@ -10,7 +10,7 @@ RUN \
 
 # Install packages
 RUN \
-  apt-get install -y --no-install-recommends tor && \
+  apt-get install -y --no-install-recommends tor tor-geoipdb torsocks && \
   apt-get autoremove -y && \
   apt-get clean
 
