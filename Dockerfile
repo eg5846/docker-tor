@@ -1,17 +1,9 @@
-FROM eg5846/ubuntu-docker:trusty
+FROM eg5846/ubuntu:xenial
 MAINTAINER Andreas Egner <andreas.egner@web.de>
-
-# Upgrade system
-RUN \
-  apt-get update && \
-  apt-get dist-upgrade -y --no-install-recommends && \
-  apt-get autoremove -y && \
-  apt-get clean
 
 # Install packages
 RUN \
   apt-get install -y --no-install-recommends tor tor-geoipdb torsocks && \
-  apt-get autoremove -y && \
   apt-get clean
 
 # Configure tor

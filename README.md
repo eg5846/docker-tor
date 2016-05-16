@@ -30,7 +30,7 @@ cat /var/log/tor/notice.log
 exit
 
 # Access logfile on volume directly
-docker run --rm -t --volumes-from tor eg5846/tor cat /var/log/tor/notice.log 
+sudo docker run --rm -t --volumes-from tor eg5846/tor cat /var/log/tor/notice.log 
 ```
 
 ## TODOs
