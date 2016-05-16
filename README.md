@@ -1,24 +1,22 @@
-# tor docker image
+# docker-tor
 Simple docker image with tor daemon installed.  
-Should be used together with https://github.com/eg5846/polipo-docker
+Should be used together with https://github.com/eg5846/docker-polipo
 
 ## Build tor docker image
 ```
-git clone https://github.com/eg5846/tor-docker.git
-cd tor-docker
-sudo docker build -t eg5846/tor-docker .
-
-# Pushing image to registry.hub.docker.com is no longer required!!!
-# Image build is automatically initiated after pushing commits of project to github.com.
-# sudo docker push eg5846/tor-docker
+git clone https://github.com/eg5846/docker-tor.git
+cd docker-tor
+sudo docker pull eg5846/ubuntu:xenial
+sudo docker build -t eg5846/tor .
+sudo docker push eg5846/tor
 ```
 
 ## Run tor docker container
 ```
-sudo docker run -d -P --name tor -h tor eg5846/tor-docker
+sudo docker run -d --restart=always -P --name tor eg5846/tor
 
 # Optional: Set tor exit nodes in env
-sudo docker run -d -e TOR_EXITNODES={ca} -P --name tor -h tor eg5846/tor-docker
+sudo docker run -d --restart=always -e TOR_EXITNODES={ca} -P --name tor eg5846/tor
 ```
 
 ## Inspect tor docker container
@@ -32,9 +30,9 @@ cat /var/log/tor/notice.log
 exit
 
 # Access logfile on volume directly
-docker run --rm -t --volumes-from tor eg5846/ubuntu-docker:trusty cat /var/log/tor/notice.log 
+docker run --rm -t --volumes-from tor eg5846/tor cat /var/log/tor/notice.log 
 ```
 
-## TODO
+## TODOs
 * Process tor logs with logstash
 * Do not run tor daemon with root rights
