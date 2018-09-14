@@ -6,17 +6,16 @@ Should be used together with https://github.com/eg5846/docker-polipo
 ```
 git clone https://github.com/eg5846/docker-tor.git
 cd docker-tor
-sudo docker pull eg5846/ubuntu:xenial
-sudo docker build -t eg5846/tor .
-sudo docker push eg5846/tor
+sudo docker pull ubuntu:bionic
+sudo docker build -t tor .
 ```
 
 ## Run tor docker container
 ```
-sudo docker run -d --restart=always -P --name tor eg5846/tor
+sudo docker run -d --restart=always -P --name tor tor
 
 # Optional: Set tor exit nodes in env
-sudo docker run -d --restart=always -e TOR_EXITNODES={ca} -P --name tor eg5846/tor
+sudo docker run -d --restart=always -e TOR_EXITNODES={ca} -P --name tor tor
 ```
 
 ## Inspect tor docker container
@@ -30,7 +29,7 @@ cat /var/log/tor/notice.log
 exit
 
 # Access logfile on volume directly
-sudo docker run --rm -t --volumes-from tor eg5846/tor cat /var/log/tor/notice.log 
+sudo docker run --rm -t --volumes-from tor tor cat /var/log/tor/notice.log 
 ```
 
 ## TODOs

@@ -1,8 +1,10 @@
-FROM eg5846/ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Andreas Egner <andreas.egner@web.de>
 
 # Install packages
 RUN \
+  apt-get update && \
+  apt-get dist-upgrade -y && \
   apt-get install -y --no-install-recommends tor tor-geoipdb torsocks && \
   apt-get clean
 
